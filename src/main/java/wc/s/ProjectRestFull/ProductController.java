@@ -43,10 +43,16 @@ public class ProductController {
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Object> updateProduct(@PathVariable("id") String id, @RequestBody Product product) {
+        //kondisi dimana jika  productrepo dengan nilai id yg dicari tidak ada, maka data tidak dapat diupdate
+        if(!productRepo.containsKey(id)){
+        return new ResponseEntity<>("product Tidak ada, cek lagi", HttpStatus.NOT_FOUND);}
+       
+        //kondisi dimana productrepo nilai id ada dan sama maka data bisa di update
+        else{
         productRepo.remove(id);
         product.setId(id);
         productRepo.put(id, product);
-        return new ResponseEntity<>("product is update successfully", HttpStatus.OK);
+        return new ResponseEntity<>("product is update successfully", HttpStatus.OK);}
     }
 
     @RequestMapping(value = "/products", method = RequestMethod.POST)
