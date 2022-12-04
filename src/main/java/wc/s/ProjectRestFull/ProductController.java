@@ -24,15 +24,15 @@ public class ProductController {
     private static Map<String, Product> productRepo = new HashMap<>();
 
     static {
-        Product honey = new Product();
-        honey.setId("1");
-        honey.setName("Taehyung");
-        productRepo.put(honey.getId(), honey);
+        Product clothes = new Product();
+        clothes.setId("1");
+        clothes.setName("Taehyung");
+        productRepo.put(clothes.getId(), clothes);
 
-        Product almond = new Product();
-        almond.setId("2");
-        almond.setName("BlackPink");
-        productRepo.put(almond.getId(), almond);
+        Product skrits = new Product();
+        skrits.setId("2");
+        skrits.setName("BlackPink");
+        productRepo.put(skrits.getId(), skrits);
     }
 
     @RequestMapping(value = "/products/{id}", method = RequestMethod.DELETE)
