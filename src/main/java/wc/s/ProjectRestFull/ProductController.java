@@ -51,8 +51,16 @@ public class ProductController {
 
     @RequestMapping(value = "/products", method = RequestMethod.POST)
     public ResponseEntity<Object> createProduct(@RequestBody Product product) {
-        productRepo.put(product.getId(), product);
-        return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED);
+        
+        //kondisi dimana HashMap product repo diambil key object ID nya di product
+        //jika productrepo sama dgn nilai id maka akan return id tidak boleh sama
+        if(productRepo.containsKey(product.getId())) {
+        return new ResponseEntity<>("ID product tidak boleh sama,tolong periksa kembali", HttpStatus.OK);}
+        
+        //jika ternyata id productrepo tidak ada yang sama maka created berhasil
+        else{
+            productRepo.put(product.getId(), product);
+            return new ResponseEntity<>("Product is created successfully", HttpStatus.CREATED);}
     }
 
     @RequestMapping(value = "/products")
