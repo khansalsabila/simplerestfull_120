@@ -27,11 +27,15 @@ public class ProductController {
         Product clothes = new Product();
         clothes.setId("1");
         clothes.setName("Taehyung");
+        clothes.setQty("2");
+        clothes.setPrice("150.000");
         productRepo.put(clothes.getId(), clothes);
 
         Product skrits = new Product();
         skrits.setId("2");
         skrits.setName("BlackPink");
+        skrits.setQty("3");
+        skrits.setPrice("300.000");
         productRepo.put(skrits.getId(), skrits);
     }
 
